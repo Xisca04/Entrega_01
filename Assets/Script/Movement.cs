@@ -14,7 +14,7 @@ public class Movement : MonoBehaviour
     private float verticalInput;
 
     private float gridTimer;
-    private float gridTimerMax = 0.5f; // Player se moverá cada medio segundo
+    private float gridTimerMax = 1f; // Player se moverá cada segundo
 
     private void Awake()
     {
@@ -25,56 +25,41 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
-        GridMovement();  
+        GridMovement();
+        HandleMoveDirection();
     }
 
     private void HandleMoveDirection()
     {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
 
-        // Cambio dirección hacia arriba
-        if (verticalInput > 0) // Si he pulsado hacia arriba (W o Flecha Arriba)
+        // Right-up
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            if (gridMoveDirection.x != 0) // Si iba en horizontal
-            {
-                // Cambio la dirección hacia arriba (0,1)
-                gridMoveDirection.x = 0;
-                gridMoveDirection.y = 1;
-            }
+            gridMoveDirection.x = 1;
+            gridMoveDirection.y = 1;
         }
 
-        // Cambio dirección hacia abajo
-        // Input es abajo?
-        if (verticalInput < 0)
+        // Right-down
+        if (Input.GetKeyDown(KeyCode.D))
         {
-            // Mi dirección hasta ahora era horizontal
-            if (gridMoveDirection.x != 0)
-            {
-                gridMoveDirection.x = 0;
-                gridMoveDirection.y = -1;
-            }
+            gridMoveDirection.x = 1;
+            gridMoveDirection.y = -1;
         }
 
-        // Cambio dirección hacia derecha
-        if (horizontalInput > 0)
+        // Left-up
+        if (Input.GetKeyDown(KeyCode.Q))
         {
-            if (gridMoveDirection.y != 0)
-            {
-                gridMoveDirection.x = 1;
-                gridMoveDirection.y = 0;
-            }
+            gridMoveDirection.x = -1;
+            gridMoveDirection.y = 1;
         }
 
-        // Cambio dirección hacia izquierda
-        if (horizontalInput < 0)
+        // Left-down
+        if (Input.GetKeyDown(KeyCode.A))
         {
-            if (gridMoveDirection.y != 0)
-            {
-                gridMoveDirection.x = -1;
-                gridMoveDirection.y = 0;
-            }
+            gridMoveDirection.x = -1;
+            gridMoveDirection.y = -1;
         }
+
     }
 
     private void GridMovement()
@@ -88,8 +73,6 @@ public class Movement : MonoBehaviour
             gridPosition += gridMoveDirection;
 
             transform.position = new Vector3(gridPosition.x, gridPosition.y, 0);
-
-
 
         }
 }   }
