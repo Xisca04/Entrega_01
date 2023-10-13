@@ -20,7 +20,7 @@ public class Movement : MonoBehaviour
     {
         startGridPosition = new Vector2Int(0, 0);
         gridPosition = startGridPosition;
-        gridMoveDirection = new Vector2Int(0, 1); // Dirección arriba por defecto
+        gridMoveDirection = new Vector2Int(1, 1); // Right-up por defecto
     }
 
     private void Update()
