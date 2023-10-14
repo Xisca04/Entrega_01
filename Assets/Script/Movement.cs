@@ -11,7 +11,7 @@ public class Movement : MonoBehaviour
     private Vector2Int gridMoveDirection;
 
     private float gridTimer;
-    private float gridTimerMax = 1f; // Player se moverá cada segundo
+    private float gridTimerMax = 1f; 
 
     private void Awake()
     {
@@ -23,41 +23,29 @@ public class Movement : MonoBehaviour
     private void Update()
     {
         GridMovement();
-        RightUp();
-        RightDown();
-        LeftUp();
-        LeftDown();
+        HandleMovement();
     }
 
-    private void RightUp()
+    private void HandleMovement()
     {
-
         if (Input.GetKeyDown(KeyCode.E))
         {
             gridMoveDirection.x = 1;
             gridMoveDirection.y = 1;
-        } 
-    }
-
-    private void RightDown()
-    {
+        }
+        
         if (Input.GetKeyDown(KeyCode.D))
         {
             gridMoveDirection.x = 1;
             gridMoveDirection.y = -1;
         }
-    }
-
-    private void LeftUp()
-    {
-        if (Input.GetKeyDown(KeyCode.Q))
+        
+        if(Input.GetKeyDown(KeyCode.Q))
         {
             gridMoveDirection.x = -1;
             gridMoveDirection.y = 1;
         }
-    }
-    private void LeftDown()
-    {
+        
         if (Input.GetKeyDown(KeyCode.A))
         {
             gridMoveDirection.x = -1;
@@ -72,11 +60,8 @@ public class Movement : MonoBehaviour
         if (gridTimer >= gridTimerMax)
         {
             gridTimer -= gridTimerMax;
-
             gridPosition += gridMoveDirection;
-
             transform.position = new Vector3(gridPosition.x, gridPosition.y, 0);
-
         }
 }   }
 
