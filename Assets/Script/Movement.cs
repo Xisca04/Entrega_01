@@ -10,9 +10,6 @@ public class Movement : MonoBehaviour
     private Vector2Int startGridPosition;
     private Vector2Int gridMoveDirection;
 
-    private float horizontalInput;
-    private float verticalInput;
-
     private float gridTimer;
     private float gridTimerMax = 1f; // Player se moverá cada segundo
 
@@ -34,13 +31,12 @@ public class Movement : MonoBehaviour
 
     private void RightUp()
     {
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             gridMoveDirection.x = 1;
             gridMoveDirection.y = 1;
-            
-            //LeftDown();
-        }
+        } 
     }
 
     private void RightDown()
