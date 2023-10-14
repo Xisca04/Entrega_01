@@ -26,40 +26,47 @@ public class Movement : MonoBehaviour
     private void Update()
     {
         GridMovement();
-        HandleMoveDirection();
+        RightUp();
+        RightDown();
+        LeftUp();
+        LeftDown();
     }
 
-    private void HandleMoveDirection()
+    private void RightUp()
     {
-
-        // Right-up
         if (Input.GetKeyDown(KeyCode.E))
         {
             gridMoveDirection.x = 1;
             gridMoveDirection.y = 1;
+            
+            //LeftDown();
         }
+    }
 
-        // Right-down
+    private void RightDown()
+    {
         if (Input.GetKeyDown(KeyCode.D))
         {
             gridMoveDirection.x = 1;
             gridMoveDirection.y = -1;
         }
+    }
 
-        // Left-up
+    private void LeftUp()
+    {
         if (Input.GetKeyDown(KeyCode.Q))
         {
             gridMoveDirection.x = -1;
             gridMoveDirection.y = 1;
         }
-
-        // Left-down
+    }
+    private void LeftDown()
+    {
         if (Input.GetKeyDown(KeyCode.A))
         {
             gridMoveDirection.x = -1;
             gridMoveDirection.y = -1;
         }
-
     }
 
     private void GridMovement()
