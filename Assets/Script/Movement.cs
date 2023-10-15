@@ -28,25 +28,29 @@ public class Movement : MonoBehaviour
 
     private void HandleMovement()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        //Right-up movement
+        if (Input.GetKeyDown(KeyCode.E) && !Input.GetKeyDown(KeyCode.A)) // Movement left-down blocked
         {
             gridMoveDirection.x = 1;
             gridMoveDirection.y = 1;
         }
-        
-        if (Input.GetKeyDown(KeyCode.D))
+
+        //Right-down movement
+        if (Input.GetKeyDown(KeyCode.D) && !Input.GetKeyDown(KeyCode.Q)) // Movement left-up blocked
         {
             gridMoveDirection.x = 1;
             gridMoveDirection.y = -1;
         }
-        
-        if(Input.GetKeyDown(KeyCode.Q))
+
+        //Left-up movement
+        if (Input.GetKeyDown(KeyCode.Q) && !Input.GetKeyDown(KeyCode.D)) // Movement right-down blocked
         {
             gridMoveDirection.x = -1;
             gridMoveDirection.y = 1;
         }
         
-        if (Input.GetKeyDown(KeyCode.A))
+        //Left-down movement
+        if (Input.GetKeyDown(KeyCode.A) && !Input.GetKeyDown(KeyCode.E)) // Movement right-up blocked
         {
             gridMoveDirection.x = -1;
             gridMoveDirection.y = -1;
