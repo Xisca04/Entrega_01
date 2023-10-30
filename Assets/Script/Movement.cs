@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    // Entregable 1
     // Player's movement
 
     private Vector2Int gridPosition;
@@ -67,7 +68,84 @@ public class Movement : MonoBehaviour
             gridPosition += gridMoveDirection;
             transform.position = new Vector3(gridPosition.x, gridPosition.y, 0);
         }
-}   }
+
+    }
+
+    // Solución Entregable 1
+    /*
+    private float timer;
+    private float timerMax = 1f;
+
+    private float diagonalUpInput; // Keys Q and E
+    private float diagonalDownInput; // Keys A and D
+
+    private Vector2Int position2D;
+    private Vector2Int moveDirection;
+
+    private void Awake()
+    {
+        // Initial position
+        position2D = Vector2Int.zero;
+        transform.position = new Vector3(position2D.x, position2D.y, 0);
+
+        // The first move is right-up
+        moveDirection = new Vector2Int(1, 1);
+    }
+
+    private void Update()
+    {
+        Movement();
+        timer += Time.deltaTime;
+        if (timer >= timerMax)
+        {
+            timer -= timerMax;
+
+            position2D += moveDirection;
+            transform.position = new Vector3(position2D.x, position2D.y, 0);
+        }
+    }
+
+    private void Movement()
+    {
+        // DiagonalUp and DiagonalDown Axes where created in Input Manager
+        diagonalUpInput = Input.GetAxisRaw("Diagonal Up");
+        diagonalDownInput = Input.GetAxisRaw("Diagonal Down");
+
+        Vector2Int previousDirection = moveDirection;
+        bool validNewPosition = true;
+
+        if (diagonalUpInput > 0)
+        {
+            moveDirection = new Vector2Int(1, 1);
+            validNewPosition = IsNewDirectionValid(previousDirection, moveDirection);
+
+        }
+        if (diagonalUpInput < 0)
+        {
+            moveDirection = new Vector2Int(-1, 1);
+            validNewPosition = IsNewDirectionValid(previousDirection, moveDirection);
+        }
+        if (diagonalDownInput > 0)
+        {
+            moveDirection = new Vector2Int(1, -1);
+            validNewPosition = IsNewDirectionValid(previousDirection, moveDirection);
+        }
+        if (diagonalDownInput < 0)
+        {
+            moveDirection = new Vector2Int(-1, -1);
+            validNewPosition = IsNewDirectionValid(previousDirection, moveDirection);
+        }
+
+        if (!validNewPosition) moveDirection = previousDirection;
+    }
+
+    private bool IsNewDirectionValid(Vector2Int previousDirection, Vector2Int newDirection)
+    {
+        return !(newDirection == -previousDirection);
+    }
+*/
+}
+
 
 
 
